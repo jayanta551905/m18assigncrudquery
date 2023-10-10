@@ -10,7 +10,7 @@ export async function POST(req, res) {
   try {
     const prisma = new PrismaClient();
     let reqBody = await req.json();
-    const result = await prisma.user.create({
+    const result = await prisma.post_tag.create({
       data: reqBody,
     });
     return NextResponse.json({ msg: "success", data: result });
@@ -27,7 +27,7 @@ export async function GET() {
 
   try {
     const prisma = new PrismaClient();
-    const result = await prisma.user.findMany({
+    const result = await prisma.post_tag.findMany({
       orderBy: {
         id: "desc",
       },
@@ -46,7 +46,7 @@ export async function PUT() {
 
   try {
     const prisma = new PrismaClient();
-    const result = await prisma.user.update({
+    const result = await prisma.post_tag.update({
       where: {
         id: 5,
       },
@@ -65,6 +65,7 @@ export async function PUT() {
 }
 
 // delete data
+
 export async function GET() {
   BigInt.prototype.toJSON = function () {
     return this.toString();
@@ -72,7 +73,7 @@ export async function GET() {
 
   try {
     const prisma = new PrismaClient();
-    const result = await prisma.user.delete({
+    const result = await prisma.post_tag.delete({
       where: {
         id: 2,
       },
